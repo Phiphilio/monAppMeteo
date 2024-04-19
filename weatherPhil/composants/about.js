@@ -1,15 +1,15 @@
-import {'react'} from "react";
-import {'view', 'text'} from "react-native";
+import React from "react";
+import {View,Text} from "react-native";
 
 export default function About () {
 
-render(){
-return (
+    return (
 
-<view>
-<text>A propos de moi</text>
-<text>lorem ipsum</text>
+        <View>
+        <Text>A propos de moi</Text>
+        <Text>lorem ipsum</Text>
 
-</view>)
-}
+        </View>
+        )
+
 }
