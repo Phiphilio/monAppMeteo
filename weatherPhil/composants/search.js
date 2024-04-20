@@ -4,7 +4,8 @@ import {View, Text, TextInput} from "react-native";
 const styleText = {
         height : 40,
         borderColor : 'grey',
-        borderWidth : 2
+        borderWidth : 2,
+        textAlign : 'center',
     }
 
 export default function Home () {
@@ -14,7 +15,6 @@ export default function Home () {
     <View>
         <TextInput
                 style={styleText}
-
                 onChange = {(text)=>setcity(text)}
                 value = {city}
               />
