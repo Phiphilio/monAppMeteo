@@ -12,13 +12,14 @@ const styleText = {
 
 export default function Home () {
 
-   const [city,setcity] = useState('Rouen')
+   const [city,setcity] = useState('')
     return (
     <View>
         <TextInput
                 style={styleText}
                 onChange = {(text)=>setcity(text)}
                 value = {city}
+                placeholder = {'Rouen'}
               />
     </View>
     )
