@@ -7,17 +7,27 @@ import {createMaterialTopTabNavigator } from '@react-navigation/material-top-tab
 
 //mise en place de la navigation
 const Tab = createMaterialTopTabNavigator ()
+// mise en place des styles pour la navigation
+const NavigationStyle = {
+    tabBarLabelStyle: {
+            fontSize: 12,
+            color : "white"
+            },
 
+    tabBarStyle: {
+    backgroundColor: '#1A3D10'
+     },
+    tabBarIndicatorStyle : {
+     backgroundColor : "purple"
+     }
+}
 export default function App() {
 
-//disoparition du statusbar (zone d'affichge du wifi)
-const [hidden, setHidden] = useState(true);
 
-const ChangeStatusBarVisibility = () => setHidden(!hidden)
   return (
   <NavigationContainer>
-      <StatusBar hidden = {hidden}/>
-       <Tab.Navigator>
+      <StatusBar hidden = {true}/>
+       <Tab.Navigator screenOptions = {NavigationStyle}>
           <Tab.Screen name="Home" component = {Home} />
           <Tab.Screen name="About" component = {About}/>
        </Tab.Navigator>
