@@ -20,6 +20,7 @@ export default function Search () {
                 onChange = {(text)=>setcity(text)}
                 value = {city}
                 placeholder = {'Rouen'}
+                onSubmitEditing = { ()=>setcity("Goodmorning")}
               />
     </View>
     )
