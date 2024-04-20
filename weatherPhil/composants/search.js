@@ -10,7 +10,7 @@ const styleText = {
         margin : 10
     }
 
-export default function Home () {
+export default function Search () {
 
    const [city,setcity] = useState('')
     return (
