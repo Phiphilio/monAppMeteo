@@ -14,8 +14,8 @@ export default function Home () {
     <View>
         <TextInput
                 style={{height:40, borderColor: 'grey', borderWidth: 5}}
-                placeholder = {"Rouen"}
-                onChangeText = {(text)=>setcity(text)}
+
+                onChange = {(text)=>setcity(text)}
                 value = {city}
               />
     </View>
