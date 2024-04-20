@@ -4,8 +4,10 @@ import {View, Text, TextInput} from "react-native";
 const styleText = {
         height : 40,
         borderColor : 'grey',
+        borderRadius : 20,
         borderWidth : 2,
         textAlign : 'center',
+        margin : 10
     }
 
 export default function Home () {
