@@ -22,10 +22,19 @@ export const NavigationStyle = {
   },
 };
 
-// Style pour les icônes
-export const UserIcon = {
+// Style pour le icône de loupe
+export const SearchIcon = {
   tabBarIcon: ({ color, size }) => (
-    <FontAwesome name="MagnifiayingGlass" color="white" size={16} />
+    <FontAwesome name="search" color="white" size={16} />
   ),
   tabBarShowLabel : false // pour faire disparaitre l'attribut name = "recherche"
+};
+
+// Style pour le icône d'information
+export const InfoIcon = {
+    tabBarIcon : ({color,size})=>(
+    <FontAwesome name="info" color="white" size={16} />
+    ),
+    tabBarShowLabel : false
+
 };

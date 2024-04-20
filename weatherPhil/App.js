@@ -3,7 +3,7 @@ import About from "./composants/about.js"
 import Search from "./composants/search.js"
 import {View, Text, StatusBar} from 'react-native'
 import {NavigationContainer} from '@react-navigation/native'
-import { Tab, NavigationStyle, UserIcon } from './navigation/navigationStyle.js'
+import { Tab, NavigationStyle, SearchIcon, InfoIcon } from './navigation/navigationStyle.js'
 
 export default function App() {
 
@@ -12,8 +12,8 @@ export default function App() {
   <NavigationContainer>
       <StatusBar hidden = {true}/>
        <Tab.Navigator screenOptions = {NavigationStyle}>
-          <Tab.Screen name="recherche" component = {Search} options = {UserIcon} />
-          <Tab.Screen name="A propos" component = {About} />
+          <Tab.Screen name="recherche" component = {Search} options = {SearchIcon} />
+          <Tab.Screen name="A propos" component = {About} options = {InfoIcon} />
        </Tab.Navigator>
   </NavigationContainer>
 
