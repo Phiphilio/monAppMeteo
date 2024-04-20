@@ -18,7 +18,9 @@ const NavigationStyle = {
     backgroundColor: '#1A3D10'
      },
     tabBarIndicatorStyle : {
-     backgroundColor : "purple"
+     backgroundColor : "white",
+     padding : 2,
+     borderRadius : 20
      }
 }
 export default function App() {
