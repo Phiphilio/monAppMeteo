@@ -11,7 +11,7 @@ export function SearchStack () {
    const [city,setcity] = useState('')
    const navigation = useNavigation()
    const GoResult = ()=>{
-    navigation.navigate('Test')
+    navigation.navigate('resultat')
    }
     return (
     <View>

@@ -7,7 +7,7 @@ import { Tab, NavigationStyle, SearchIcon, InfoIcon, SearchStackStyle } from './
 
 import {createStackNavigator } from '@react-navigation/stack'
 
-import {Result} from './composants/result.js'
+import {ResultStack} from './navigationStackScreen/ResultStack.js'
 import {Test} from './navigationStackScreen/test.js'
 
 const Stack = createStackNavigator();
@@ -15,9 +15,9 @@ const Stack = createStackNavigator();
 export function StackScreens (){
 
 return(
-        <Stack.Navigator>
-            <Stack.Screen name = "pierre" component = {SearchStack} options ={SearchStackStyle} />
-            <Stack.Screen name = "Test" component = {Test} />
+        <Stack.Navigator initialRouteName="requete" >
+            <Stack.Screen name = "requete" component = {SearchStack} options ={SearchStackStyle} />
+            <Stack.Screen name = "resultat" component = {ResultStack}  />
         </Stack.Navigator>
 )}
 
