@@ -38,3 +38,19 @@ export const InfoIcon = {
     tabBarShowLabel : false
 
 };
+
+//style pour le searchStack
+export const SearchStackStyle = {
+headerShown : false
+
+}
+
+// style de la barre de recherche
+export const styleText = {
+        height : 40,
+        borderColor : 'grey',
+        borderRadius : 20,
+        borderWidth : 2,
+        textAlign : 'center',
+        margin : 10
+    }

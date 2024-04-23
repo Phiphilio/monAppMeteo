@@ -2,19 +2,11 @@ import React , {useState} from 'react';
 import {View, Text, TextInput} from "react-native";
 import {createStackNavigator } from '@react-navigation/stack'
 import {useNavigation , NavigationContainer} from '@react-navigation/native'
-import {Result} from './result.js'
-import {Test} from './test.js'
+import {styleText} from '../navigation/navigationStyle.js'
 
-const styleText = {
-        height : 40,
-        borderColor : 'grey',
-        borderRadius : 20,
-        borderWidth : 2,
-        textAlign : 'center',
-        margin : 10
-    }
 
-export function Search () {
+
+export function SearchStack () {
 
    const [city,setcity] = useState('')
    const navigation = useNavigation()

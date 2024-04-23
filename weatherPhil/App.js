@@ -1,9 +1,9 @@
 import React from 'react';
 import About from "./composants/about.js"
-import {SearchStack} from "./navigationStackScreen/search.js"
+import {SearchStack} from "./navigationStackScreen/searchStack.js"
 import { StatusBar, Button, View} from 'react-native'
 import {NavigationContainer, useNavigation} from '@react-navigation/native'
-import { Tab, NavigationStyle, SearchIcon, InfoIcon } from './navigation/navigationStyle.js'
+import { Tab, NavigationStyle, SearchIcon, InfoIcon, SearchStackStyle } from './navigation/navigationStyle.js'
 
 import {createStackNavigator } from '@react-navigation/stack'
 
@@ -16,7 +16,7 @@ export function StackScreens (){
 
 return(
         <Stack.Navigator>
-            <Stack.Screen name = "pierre" component = {SearchStack} options ={{headerShown : false}} />
+            <Stack.Screen name = "pierre" component = {SearchStack} options ={SearchStackStyle} />
             <Stack.Screen name = "Test" component = {Test} />
         </Stack.Navigator>
 )}
