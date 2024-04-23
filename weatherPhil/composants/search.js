@@ -1,5 +1,9 @@
 import React , {useState} from 'react';
 import {View, Text, TextInput} from "react-native";
+import {createStackNavigator } from '@react-navigation/stack'
+import {useNavigation , NavigationContainer} from '@react-navigation/native'
+import {Result} from './result.js'
+import {Test} from './test.js'
 
 const styleText = {
         height : 40,
@@ -10,18 +14,25 @@ const styleText = {
         margin : 10
     }
 
-export default function Search () {
+export function Search () {
 
    const [city,setcity] = useState('')
+   const navigation = useNavigation()
+   const GoResult = ()=>{
+    navigation.navigate('Test')
+   }
     return (
     <View>
         <TextInput
                 style={styleText}
                 onChange = {(text)=>setcity(text)}
                 value = {city}
-                placeholder = {'Rouen'}
-                onSubmitEditing = { ()=>setcity("Goodmorning")}
+                placeholder = {'rechercher une ville'}
+                onSubmitEditing = { GoResult}
               />
     </View>
     )
 }
+
+
+
