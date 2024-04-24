@@ -46,7 +46,7 @@ async function WeatherReport(){
                 const report = await reponse.json()
                 console.log("le statut de ma requête:",reponse.status)
                 console.log("voici la reponse :",reponse)
-                console.log("voici la date :",reponse.user)
+                console.log("voici la date :",report.user)
                 console.log("voici le report :",report)
         }catch (error) {
             console.error("voici l erreur :",error)
