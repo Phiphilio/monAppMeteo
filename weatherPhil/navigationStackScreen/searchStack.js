@@ -28,20 +28,22 @@ export function SearchStack () {
 
 //envoie des requêtes à l'api de meteomatics
 async function WeatherReport(){
-    const login = "snowphil_phil_phil";
+    const username = "snowphil_phil_phil";
     const password = "61Hahp8YJe";
     // Encodage de base 64
-    const credentials = Buffer.from(`${login}:${password}`).toString('base64');
+    const credentials = Buffer.from(`${username}:${password}`).toString('base64');
 
         try{
                 const reponse = await fetch("https://api.meteomatics.com/2024-04-24T15:45:00.000+02:00/t_2m:C/49.4404591,1.0939658/json?", {
 
                 method : "POST",
-                header : {
-                    'Authorization': `Basic ${credentials}`
+                headers : {
+                    'Authorization': `Basic ${credentials}`,
+                    'Content-Type': 'application/json'
                 } })
                 const report = await reponse.json
-                console.log("voici la réponse :",report)
+                console.log("le statut de ma requête:",reponse.status)
+                console.log("voici le report :",report)
         }catch (error) {
             console.error("voici l erreur :",error)
         }
