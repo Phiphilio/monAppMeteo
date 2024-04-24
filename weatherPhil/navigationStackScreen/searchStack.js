@@ -20,10 +20,31 @@ export function SearchStack () {
                 onChange = {(text)=>setcity(text)}
                 value = {city}
                 placeholder = {'rechercher une ville'}
-                onSubmitEditing = { WeatherReport}
+                onSubmitEditing = { (text)=>getCoordinates(text)}
               />
     </View>
     )
+}
+
+function AucuneVille () {
+
+return(<Text> aucune ville trouvée</Text>)}
+
+async function getCoordinates(cityName) {
+    const url = `https://nominatim.openstreetmap.org/search?q=${cityName}&format=json&addressdetails=1&limit=1`
+  const response = await fetch(url);
+  const data = await response.json();
+        console.log("voici les data :",data)
+  if (data.length > 0) {
+    const location = data[0];
+    return {
+      latitude: location.lat,
+      longitude: location.lon,
+      display_name: location.display_name,
+    };
+  } else {
+    throw new Error("City not found");
+  }
 }
 
 //envoie des requêtes à l'api de meteomatics
