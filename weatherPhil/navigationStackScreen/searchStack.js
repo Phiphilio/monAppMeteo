@@ -28,6 +28,8 @@ export function SearchStack () {
 
 //envoie des requêtes à l'api de meteomatics
 async function WeatherReport(){
+
+/** pour m'identifier https://www.meteomatics.com/en/api/request/api-requests-oauth-authentification/*/
     const username = "snowphil_phil_phil";
     const password = "61Hahp8YJe";
     // Encodage de base 64
@@ -41,8 +43,10 @@ async function WeatherReport(){
                     'Authorization': `Basic ${credentials}`,
                     'Content-Type': 'application/json'
                 } })
-                const report = await reponse.json
+                const report = await reponse.json()
                 console.log("le statut de ma requête:",reponse.status)
+                console.log("voici la reponse :",reponse)
+                console.log("voici la date :",reponse.user)
                 console.log("voici le report :",report)
         }catch (error) {
             console.error("voici l erreur :",error)
