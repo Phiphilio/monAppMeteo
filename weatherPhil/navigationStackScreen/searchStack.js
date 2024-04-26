@@ -11,6 +11,8 @@ export function SearchStack () {
    const [city,setcity] = useState('')
    const navigation = useNavigation()
    const GoResult = ()=>{
+   getCoordinates(city)
+   console.log("ça a marché")
     navigation.navigate('resultat')
 
    }
@@ -28,8 +30,9 @@ export function SearchStack () {
                 onChangeText = {(text) => setcity(text) }
                 value = {city}
                 placeholder = {'rechercher une ville'}
-                onSubmitEditing = {()=>getCoordinates(city)}
+                onSubmitEditing = {GoResult}
               />
+
     </View>
     )
 }
@@ -37,19 +40,16 @@ export function SearchStack () {
 async function getCoordinates (cityName) {
 
         try{
+            const query = cityName.trim();
+            const url = `https://nominatim.openstreetmap.org/search?q=${query}&format=json&addressdetails=1&limit=1`
+            const response = await fetch(url);
+            const data = await response.json();
 
-
-        const query = cityName.trim();
-        const url = `https://nominatim.openstreetmap.org/search?q=${query}&format=json&addressdetails=1&limit=1`
-        const response = await fetch(url);
-        const data = await response.json();
-
-        if (data.length > 0) {
-          const location = data[0];
-          console.log("nous sommes à ", location.address.city)
-            console.log("de longitude", location.lon)
-             WeatherReport(location.lat, location.lon)
-        }
+            if (data.length > 0) {
+              const location = data[0];
+              console.log("nous sommes à ", location.address.city)
+               WeatherReport(location.lat, location.lon)//appel de la fonction pour obtenir les coordonées météos
+            }
         }catch(error) {
           console.error("City not found", error);
         }
@@ -71,7 +71,7 @@ async function WeatherReport(lat, lon){
     // Encodage de base 64
     const credentials = Buffer.from(`${username}:${password}`).toString('base64');
 
-    const url = `https://api.meteomatics.com/${formattedDate}/t_2m:C/${lat},${lon}/json`
+    const url = `https://api.meteomatics.com/${formattedDate}/t_2m:C,wind_speed_10m:ms/${lat},${lon}/json`
         try{
                 const reponse = await fetch(url, {
 
@@ -83,7 +83,9 @@ async function WeatherReport(lat, lon){
                 const report = await reponse.json()
                 console.log("voici la date :",report.dateGenerated)
                 console.log("voici le report :",report)
-                console.log("voici la temperature :",report.data[0].coordinates[0].dates[0])
+                console.log("voici les données de temperature :",report.data[0].coordinates[0])
+                console.log("voici les données de vitesse du vent :",report.data[1].coordinates[0].dates[0])
+                return report;
         }catch (error) {
             console.error("voici l erreur :",error)
         }
