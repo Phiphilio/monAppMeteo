@@ -14,7 +14,12 @@ export function SearchStack () {
     navigation.navigate('resultat')
 
    }
-
+/** je ne pouvais pas appeler getCoordinates avec city en paramètre ici parce qu'à chaque fois
+ que je tape une lettre dans l'input, SearchStack se relance, ce qui aurait lancé plusieurs fois la fonction getCoordinates
+ pour remédier à ça, j'appelle directement la fonction au niveau du props "onSubmitEditing".
+ Par contre, je n'aurais pas pu juste taper getCoordinates(city), parce que la fonction s'execute avant que onSubmitEditing ne soit rendu.
+ Il faut donc passer par une fonction fléchée ()=>getCoordinates(city) parce qu'elle s'excute uniquement quand onSubmitEditing se produit
+ */
 
     return (
     <View>
@@ -31,6 +36,9 @@ export function SearchStack () {
 
 async function getCoordinates (cityName) {
 
+        try{
+
+
         const query = cityName.trim();
         const url = `https://nominatim.openstreetmap.org/search?q=${query}&format=json&addressdetails=1&limit=1`
         const response = await fetch(url);
@@ -40,7 +48,8 @@ async function getCoordinates (cityName) {
           const location = data[0];
           console.log("nous sommes à ", location.address.city)
             console.log("de longitude", location.lon)
-        } else {
+        }
+        }catch(error) {
           console.error("City not found", error);
         }
       }
