@@ -83,7 +83,7 @@ async function WeatherReport(lat, lon){
                 const report = await reponse.json()
                 console.log("voici la date :",report.dateGenerated)
                 console.log("voici le report :",report)
-                console.log("voici la temperature :",report.data[0].getCoordinates)
+                console.log("voici la temperature :",report.data[0].coordinates[0].dates[0])
         }catch (error) {
             console.error("voici l erreur :",error)
         }
