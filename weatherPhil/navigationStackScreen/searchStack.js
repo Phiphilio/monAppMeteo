@@ -48,6 +48,7 @@ async function getCoordinates (cityName) {
           const location = data[0];
           console.log("nous sommes à ", location.address.city)
             console.log("de longitude", location.lon)
+             WeatherReport(location.lat, location.lon)
         }
         }catch(error) {
           console.error("City not found", error);
@@ -55,16 +56,24 @@ async function getCoordinates (cityName) {
       }
 
 //envoie des requêtes à l'api de meteomatics
-async function WeatherReport(){
+async function WeatherReport(lat, lon){
 
-/** pour m'identifier https://www.meteomatics.com/en/api/request/api-requests-oauth-authentification/*/
+    // les coordonnées actuelles
+    const currentDate = new Date();
+
+    // Format ISO 8601 (année-mois-jourTheure:minute:seconde)
+    const formattedDate = currentDate.toISOString(); // "2024-04-25T14:45:00.000Z"
+
+    /** pour m'identifier https://www.meteomatics.com/en/api/request/api-requests-oauth-authentification/*/
     const username = "snowphil_phil_phil";
     const password = "61Hahp8YJe";
+
     // Encodage de base 64
     const credentials = Buffer.from(`${username}:${password}`).toString('base64');
 
+    const url = `https://api.meteomatics.com/${formattedDate}/t_2m:C/${lat},${lon}/json`
         try{
-                const reponse = await fetch("https://api.meteomatics.com/2024-04-24T15:45:00.000+02:00/t_2m:C/49.4404591,1.0939658/json?", {
+                const reponse = await fetch(url, {
 
                 method : "POST",
                 headers : {
@@ -72,10 +81,9 @@ async function WeatherReport(){
                     'Content-Type': 'application/json'
                 } })
                 const report = await reponse.json()
-                console.log("le statut de ma requête:",reponse.status)
-                console.log("voici la reponse :",reponse)
-                console.log("voici la date :",report.user)
+                console.log("voici la date :",report.dateGenerated)
                 console.log("voici le report :",report)
+                console.log("voici la temperature :",report.data[0].getCoordinates)
         }catch (error) {
             console.error("voici l erreur :",error)
         }
@@ -83,3 +91,4 @@ async function WeatherReport(){
 }
 
 // source coordonnées : https://nominatim.org/release-docs/develop/api/Output/
+
