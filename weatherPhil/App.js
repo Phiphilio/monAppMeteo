@@ -17,7 +17,7 @@ export function StackScreens (){
 return(
         <Stack.Navigator initialRouteName="requete" >
             <Stack.Screen name = "requete" component = {SearchStack} options ={SearchStackStyle} />
-            <Stack.Screen name = "resultat" component = {ResultStack}  />
+            <Stack.Screen name = "météo" component = {ResultStack}  />
         </Stack.Navigator>
 )}
 

@@ -1,14 +1,25 @@
 import React from 'react';
 import { StatusBar, View, Text} from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import {getCoordinates} from './fonctions.js'
 
 export function ResultStack() {
-{console.log("le Stack.Screen aussi \n")}
+    const route = useRoute();
+  const { city } = route.params; // Récupérer le paramètre 'city'
+
 
   return (
  <View>
- {console.log("la fonction Result a été executé, donc tout marche \n")}
- <Text> voilà le résulte </Text>
+
+ <Text> il cherche la météo de {city} </Text>
  </View>
 
   );
 }
+function Block(){
+
+return (
+    <View>
+
+    </View>
+)}
