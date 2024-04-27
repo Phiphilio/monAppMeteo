@@ -1,19 +1,37 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { FontAwesome } from 'react-native-vector-icons';
 
-// Mise en place de la navigation
-export const Tab = createMaterialTopTabNavigator();
+// Mise en place de la navigation au sommet
+export const TabTop = createMaterialTopTabNavigator();
 
-// Mise en place des styles pour la navigation
-export const NavigationStyle = {
-  tabBarLabelStyle: {
-    fontSize: 12,
-    color: "white",
+// Mise en place de la section des favoris
+export const TabBottom = createBottomTabNavigator();
+
+// Mise en place des styles pour la navigation en bas
+
+export const Header = {
+    headerStyle: { backgroundColor: '#1A3D10' },
+    headerTintColor: 'white',
+     headerTitleAlign: 'center',
+    }
+
+export const NavigationBas = {
+tabBarStyle: {
+    backgroundColor: '#1A3D10',
   },
+   tabBarShowLabel : false,
+   tabBarIcon : ({color,size})=>(
+       <FontAwesome name="cloud" color="white" size={16} />
+       ),
+}
+
+// Mise en place des styles pour la navigation du sommet
+export const NavigationStyle = {
 
   tabBarStyle: {
-    backgroundColor: '#1A3D10',
+    backgroundColor: 'black',
   },
   tabBarIndicatorStyle: {
     backgroundColor: "white",

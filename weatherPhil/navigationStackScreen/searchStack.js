@@ -10,12 +10,8 @@ export function SearchStack () {
    const [city,setcity] = useState('')
    const navigation = useNavigation()
    const GoResult = ()=>{
-
-   console.log("ça a marché")
-    navigation.navigate('météo', {city})
-
+    navigation.navigate('météo', {city})//passe city en paramètre pour récupérer sa valeur dans l'autre Stack
    }
-
 
     return (
     <View>
@@ -23,10 +19,9 @@ export function SearchStack () {
                 style={styleText}
                 onChangeText = {(text) => setcity(text) }
                 value = {city}
-                placeholder = {'rechercher une ville'}
+                placeholder = {'rechercher un pays ou une ville'}
                 onSubmitEditing = {GoResult}
               />
-
     </View>
     )
 }
