@@ -46,7 +46,7 @@ import { Buffer } from 'buffer'; // Importation nécessaire pour React Native
                     } })
                     const report = await reponse.json();
                    // console.log("voici la date :",report.dateGenerated)
-                    console.log("voici le report :",report)
+                    //console.log("voici le report :",report)
                    /* console.log("voici les données de temperature :",report.data[0].coordinates[0])
                     console.log("voici la temperature :",report.data[0].coordinates[0].dates[0].value)
                     console.log("voici les données de vitesse du vent :",report.data[1].coordinates[0].dates[0])*/

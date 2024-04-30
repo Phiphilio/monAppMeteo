@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -72,3 +73,42 @@ export const styleText = {
         textAlign : 'center',
         margin : 10
     }
+
+// style pour les block
+/** faire attention, les styles pour les composants de base de react-native ne s'appliquent pas de la même manière que
+pour react-navigation avec ses screens
+*/
+export const blockStyle = StyleSheet.create({
+
+
+    centerAll : {
+        justifyContent : 'center',
+        textAlign : 'center',
+        alignItems : 'center'
+    },
+    width : 300,
+    height : 320,
+    borderRadius : 20,
+    backgroundColor : '#1A3D10',
+    margin : 40,
+    alignItems : 'center',
+    justifyContent : 'center',
+
+    resultat : {
+        color :'white',
+        fontSize : 25,
+        justifyContent : 'center',
+        textAlign : 'center',
+        alignItems : 'center'
+    },
+
+    temperature : {
+    color :'white',
+     fontSize : 25
+    },
+
+    vent : {
+     fontSize : 17
+    },
+
+  })
