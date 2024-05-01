@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { getCoordinates } from './fonctions.js';
 import { blockStyle } from '../navigation/navigationStyle.js'
@@ -11,10 +11,10 @@ export function ResultStack() {
   const [coordinates, setCoordinates] = useState(null);
   const [error, setError] = useState(null);
 
-   // je stocke les valeurs
+  /* // je stocke les valeurs
               const [dateGenerated,setDateGenerated] = useState(null)
               const [temperature, setTemperature] = useState(null)
-              const [windSpeed,setWindSpeed] = useState(null)
+              const [windSpeed,setWindSpeed] = useState(null)*/
 
   useEffect(() => {
     let isMounted = true;
@@ -22,13 +22,16 @@ export function ResultStack() {
     const fetchCoordinates = async () => {
       try {
         const result = await getCoordinates(city) ;
-          const objResult = JSON.parse(JSON.stringify(result))
+
+        //JSON.parse(= transforme la chaine de caractère en objet
+        const objResult = JSON.parse(JSON.stringify(result))
+
         if (isMounted) {
           setCoordinates(objResult);
 
-            setDateGenerated( coordinates.dateGenerated); // Date de génération
+            /*setDateGenerated( coordinates.dateGenerated); // Date de génération
             setTemperature( coordinates.data[0].coordinates[0].dates[0].value); // Température
-            setWindSpeed(coordinates.data[1].coordinates[0].dates[0].value); // Vitesse du vent
+            setWindSpeed(coordinates.data[1].coordinates[0].dates[0].value); // Vitesse du vent*/
         }
       } catch (err) {
         if (isMounted) {
@@ -43,14 +46,24 @@ export function ResultStack() {
       isMounted = false; // Arrêter les mises à jour si le composant est démonté
     };
   }, [city]);
+//revoir le rôle de 'N/A'
+let dateGenerated = 'N/A';
+let temperature = 'N/A';
+let windSpeed = 'N/A';
 
+if (coordinates) {
+  dateGenerated = coordinates.dateGenerated || 'N/A'; // Date de génération
+  // j'utilise l'optional chaining (notation avec les points d'interrogations) je me documenterais plus sur ça demain
+  temperature = coordinates.data?.[0]?.coordinates?.[0]?.dates?.[0]?.value || 'N/A'; // Température
+  windSpeed = coordinates.data?.[1]?.coordinates?.[0]?.dates?.[0]?.value || 'N/A'; // Vitesse du vent
+}
   return (
     <View style = {blockStyle.centerAll}>
       {error ? (
        <ErrorLoading content = {error.message}/>
       ) : (
         <>
-        {coordinates ? (<BlockReport contentA = {city} contentB = {temperature} contentC = {windSpeed}/>) : <Text>chargement...</Text>}
+        {coordinates ? (<BlockReport contentA = {city} contentB = {temperature} contentC = {windSpeed}/>) : <ActivityIndicator size="150" color="#00ff00"/>}
         </>
       )}
     </View>
@@ -63,7 +76,7 @@ function BlockReport ({contentA, contentB, contentC}) {
 return (
         <>
             <View style = {blockStyle}>
-                <Text> {contentA} </Text>
+                <Text style = {blockStyle.ville}> {contentA} </Text>
                 <Text style = {blockStyle.temperature}> il fait {contentB} °C</Text>
                 <Text style = {blockStyle.vent}>{contentC} m/s</Text>
             </View>
@@ -82,5 +95,11 @@ return (
         </>
     )
 }
+function Loading (){
+    return (
+    <>
 
+    </>
+    )
+}
  //<Text>Erreur lors de la récupération des coordonnées : {error.message}</Text>

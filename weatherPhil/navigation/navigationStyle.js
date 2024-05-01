@@ -102,12 +102,18 @@ export const blockStyle = StyleSheet.create({
         alignItems : 'center'
     },
 
+    ville : {
+    color :'white',
+    fontSize : 17
+    },
+
     temperature : {
     color :'white',
      fontSize : 25
     },
 
     vent : {
+    color :'white',
      fontSize : 17
     },
 
