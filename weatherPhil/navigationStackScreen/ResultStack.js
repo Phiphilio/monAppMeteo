@@ -4,17 +4,14 @@ import { useRoute } from '@react-navigation/native';
 import { getCoordinates } from './fonctions.js';
 import { blockStyle } from '../navigation/navigationStyle.js'
 
+console.log("je suis dans le ResultStack.js");
+
 export function ResultStack() {
   const route = useRoute();
   const { city } = route.params;
 
   const [coordinates, setCoordinates] = useState(null);
   const [error, setError] = useState(null);
-
-  /* // je stocke les valeurs
-              const [dateGenerated,setDateGenerated] = useState(null)
-              const [temperature, setTemperature] = useState(null)
-              const [windSpeed,setWindSpeed] = useState(null)*/
 
   useEffect(() => {
     let isMounted = true;
@@ -28,10 +25,6 @@ export function ResultStack() {
 
         if (isMounted) {
           setCoordinates(objResult);
-
-            /*setDateGenerated( coordinates.dateGenerated); // Date de génération
-            setTemperature( coordinates.data[0].coordinates[0].dates[0].value); // Température
-            setWindSpeed(coordinates.data[1].coordinates[0].dates[0].value); // Vitesse du vent*/
         }
       } catch (err) {
         if (isMounted) {

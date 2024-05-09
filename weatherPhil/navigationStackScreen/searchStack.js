@@ -10,6 +10,7 @@ export function SearchStack () {
    const [city,setcity] = useState('')
    const navigation = useNavigation()
    const GoResult = ()=>{
+   console.log("Navigating with city:", city);
     navigation.navigate('météo', {city})//passe city en paramètre pour récupérer sa valeur dans l'autre Stack
    }
 

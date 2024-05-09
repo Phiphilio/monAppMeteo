@@ -28,7 +28,7 @@ export default function App() {
 <NavigationContainer>
       <StatusBar hidden = {true}/>
         <TabBottom.Navigator screenOptions={Header}>
-            <TabBottom.Screen name = "weather Phil" component = {TabTopScreen} options = {NavigationBas}/>
+            <TabBottom.Screen name = "weatherPhil" component = {TabTopScreen} options = {NavigationBas}/>
         </TabBottom.Navigator>
   </NavigationContainer>
   );
