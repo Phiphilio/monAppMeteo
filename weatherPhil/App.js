@@ -8,21 +8,12 @@ import { TabBottom,TabTop, NavigationStyle, NavigationBas,Header, SearchIcon, In
 import {createStackNavigator } from '@react-navigation/stack'
 
 import {ResultStack} from './navigationStackScreen/ResultStack.js'
+
 import Config from 'react-native-config'; // je récupère dans le config les identifiants du content user de la database et je la transforme en variable d'environement
 const mongodbUri = Config.MONGODB_URI;
 
-
-
-const Stack = createStackNavigator();
-
-export function StackScreens (){
-
-return(
-        <Stack.Navigator initialRouteName="requete" >
-            <Stack.Screen name = "requete" component = {SearchStack} options ={SearchStackStyle} />
-            <Stack.Screen name = "météo" component = {ResultStack}  />
-        </Stack.Navigator>
-)}
+console.log("ce que contient mongodburi",mongodbUri)
+console.log("ce que contient Config.API_URL",Config.API_URL)
 
 export default function App() {
 
@@ -44,4 +35,18 @@ export function TabTopScreen (){
               <TabTop.Screen name="A propos" component = {About} options = {InfoIcon} />
            </TabTop.Navigator>)
 }
+
+
+const Stack = createStackNavigator();
+
+export function StackScreens (){
+
+return(
+        <Stack.Navigator initialRouteName="requete" >
+            <Stack.Screen name = "requete" component = {SearchStack} options ={SearchStackStyle} />
+            <Stack.Screen name = "météo" component = {ResultStack}  />
+        </Stack.Navigator>
+)}
+
+
 {/*https://www.meteomatics.com/en/api/api-tutorials/*/}

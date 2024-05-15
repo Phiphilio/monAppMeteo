@@ -5,7 +5,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "84928071-be37-4834-91fc-a07462d2dcd7"
+      }
+    }
   },
   "name": "weatherPhil"
 }
