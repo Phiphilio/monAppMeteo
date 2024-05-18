@@ -9,11 +9,7 @@ import {createStackNavigator } from '@react-navigation/stack'
 
 import {ResultStack} from './navigationStackScreen/ResultStack.js'
 
-import Config from 'react-native-config'; // je récupère dans le config les identifiants du content user de la database et je la transforme en variable d'environement
-const mongodbUri = Config.MONGODB_URI;
 
-console.log("ce que contient mongodburi",mongodbUri)
-console.log("ce que contient Config.API_URL",Config.API_URL)
 
 export default function App() {
 
