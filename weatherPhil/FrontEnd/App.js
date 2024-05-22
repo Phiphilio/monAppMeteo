@@ -1,13 +1,13 @@
 import React from 'react';
 import About from "./composants/about.js"
-import {SearchStack} from "./navigationStackScreen/searchStack.js"
+import {SearchStack} from "./navigationStackScreen/pastScreen/searchStack.js"
 import { StatusBar, Button, View} from 'react-native'
 import {NavigationContainer, useNavigation} from '@react-navigation/native'
 import { TabBottom,TabTop, NavigationStyle, NavigationBas,Header, SearchIcon, InfoIcon, SearchStackStyle } from './navigation/navigationStyle.js'
 
 import {createStackNavigator } from '@react-navigation/stack'
 
-import {ResultStack} from './navigationStackScreen/ResultStack.js'
+import {ResultStack} from './navigationStackScreen/pastScreen/ResultStack.js'
 
 
 

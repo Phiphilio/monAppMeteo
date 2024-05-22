@@ -1,6 +1,7 @@
 const mongoose = require ('mongoose');
 const bcrypt = require('bcrypt');
 
+
 // je crée une instance de mongoose.Schema et je définis pour chaque propriété le genre d'informations attendus
 const UserSchema = new mongoose.Schema({
     username : {

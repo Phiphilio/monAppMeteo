@@ -21,14 +21,14 @@ const logger = (req, res, next) => {
   next(); // Passe au middleware suivant ou au gestionnaire de route
 };
 //test
-app.use('/api',logger,routesTest)
+app.use('/routes',logger,routesTest)
 //routes
 app.get('/',(req,res)=>{
     res.send('hello world')
     }
   )
 app.post ('', (req,res)=>{
-    res.send('hello world')
+    res.send('goodby world')
     }
 )
 app.listen(port, ()=> {
