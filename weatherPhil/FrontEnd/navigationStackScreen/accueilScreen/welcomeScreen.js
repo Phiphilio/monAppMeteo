@@ -6,7 +6,6 @@ const navigation = useNavigation()
 const GoLogin = ()=> { navigation.navigate('login')}
 return(
     <View>
-     <Text>A</Text>
     <Button
         onPress = {GoLogin}
         title = 'Access'

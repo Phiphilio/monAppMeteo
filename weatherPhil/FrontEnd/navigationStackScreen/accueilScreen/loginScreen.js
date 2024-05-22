@@ -1,21 +1,28 @@
-import { TextInput,Text, Button, View} from 'react-native'
+import { TextInput,Text, Button, View,  TouchableOpacity} from 'react-native'
 import {styleText} from '../../navigation/navigationStyle.js'
-export function LoginStackScreen (){
+import {useNavigation} from '@react-navigation/native'
 
+export function LoginStackScreen (){
+const navigation = useNavigation()
+const GoLogin = ()=> { navigation.navigate('sign up')}
 return(
     <View>
     <TextInput
-    textAlign ={'left'}
+    placeholder = {'name'}
+        textAlign ={'left'}
         style={styleText}
     />
     <TextInput
         textAlign ={'left'}
+        secureTextEntry={true}
         style={styleText}
     />
     <Button
          title = 'login'
     />
-    <Text> signin </Text>
+    <TouchableOpacity onPress={GoLogin}>
+         <Text> sign up </Text>
+    </TouchableOpacity>
     </View>
     )
 }
