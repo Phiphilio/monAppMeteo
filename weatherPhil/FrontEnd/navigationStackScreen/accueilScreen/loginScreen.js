@@ -3,8 +3,10 @@ import {styleText} from '../../navigation/navigationStyle.js'
 import {useNavigation} from '@react-navigation/native'
 
 export function LoginStackScreen (){
+
 const navigation = useNavigation()
-const GoLogin = ()=> { navigation.navigate('sign up')}
+const GoSignup = ()=> { navigation.navigate('sign up')}
+
 return(
     <View>
     <TextInput
@@ -20,7 +22,7 @@ return(
     <Button
          title = 'login'
     />
-    <TouchableOpacity onPress={GoLogin}>
+    <TouchableOpacity onPress={GoSignup}>
          <Text> sign up </Text>
     </TouchableOpacity>
     </View>

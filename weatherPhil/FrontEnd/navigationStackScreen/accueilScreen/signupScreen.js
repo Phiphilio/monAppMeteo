@@ -16,7 +16,7 @@ return(
            style={styleText}
        />
        <Button
-            title = 'login'
+            title = 'inscription'
        />
        </View>
     )
