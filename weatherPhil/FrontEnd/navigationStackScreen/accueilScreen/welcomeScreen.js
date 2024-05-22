@@ -3,12 +3,12 @@ import {useNavigation} from '@react-navigation/native'
 
 export function WelcomeStackScreen (){
 const navigation = useNavigation()
-
+const GoLogin = ()=> { navigation.navigate('login')}
 return(
     <View>
      <Text>A</Text>
     <Button
-        onPress = { ()=> { navigation.navigate('login')}}
+        onPress = {GoLogin}
         title = 'Access'
          />
     </View>
