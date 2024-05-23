@@ -4,18 +4,11 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { FontAwesome } from 'react-native-vector-icons';
 
-// Mise en place de la navigation au sommet
-export const TabTop = createMaterialTopTabNavigator();
-
-// Mise en place de la section des favoris
-export const TabBottom = createBottomTabNavigator();
 
 // Mise en place des styles pour la navigation en bas
 
-export const Header = {
-    headerStyle: { backgroundColor: '#1A3D10' },
-    headerTintColor: 'white',
-     headerTitleAlign: 'center',
+export const NoHeader = {
+    headerShown : false
     }
 
 export const NavigationBas = {

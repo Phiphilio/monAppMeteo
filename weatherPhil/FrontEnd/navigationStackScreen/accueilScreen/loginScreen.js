@@ -4,8 +4,10 @@ import {useNavigation} from '@react-navigation/native'
 
 export function LoginStackScreen (){
 
+
 const navigation = useNavigation()
 const GoSignup = ()=> { navigation.navigate('sign up')}
+const GoConnected = ()=> { navigation.navigate('connected')}
 
 return(
     <View>
@@ -21,6 +23,7 @@ return(
     />
     <Button
          title = 'login'
+         onPress = {GoConnected}
     />
     <TouchableOpacity onPress={GoSignup}>
          <Text> sign up </Text>
