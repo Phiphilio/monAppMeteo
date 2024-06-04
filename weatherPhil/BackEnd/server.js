@@ -2,12 +2,18 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');;
 const routesTest = require('./routes/routes')
 
+//lance le projet en mode développeur (mpn run dev)
 // récupère les informations passées en variables d'environnements
 dotenv.config()
 
 const app = express()
+
+//j'utilise cors
+app.use(cors());
+
 app.use(bodyParser.json());
 const port = 5000
 
@@ -32,7 +38,7 @@ app.post ('', (req,res)=>{
     }
 )
 app.listen(port, ()=> {
-    console.log("le serveur écoute au port 5000")
+    console.log("le serveur écoute au port",port)
 
     }
  )

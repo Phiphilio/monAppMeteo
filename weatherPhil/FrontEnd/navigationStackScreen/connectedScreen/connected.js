@@ -8,8 +8,7 @@ const BackLogin = ()=> { navigation.goBack('login')}
 return(
     <View>
     <TouchableOpacity onPress={BackLogin}>
-    <Text></Text>
-    <Text></Text>
+    <Text></Text><Text></Text>
     <Text>connecté!!!</Text>
     </TouchableOpacity>
     </View>
