@@ -63,9 +63,33 @@ async function login( name, password){
             },
         body : JSON.stringify(donnees)
     })
+
+        // Vérifiez le statut de la réponse
+        if (!reponse.ok) {
+            if (reponse.status === 401) {
+                // Si le statut est 401, cela signifie une erreur d'authentification
+                const errorMessage = await reponse.text(); // Récupère le message d'erreur de la réponse
+                throw new Error(errorMessage);
+                return errorMessage
+            } else
+            if (reponse.status === 500) {
+             // Si le statut est 500, cela signifie une erreur du serveur
+                const errorMessage = await reponse.text(); // Récupère le message d'erreur de la réponse
+               throw new Error(errorMessage);
+               return errorMessage
+             } else {
+                throw new Error(`HTTP error! status: ${reponse.status}, statusText: ${reponse.statusText}`);
+             }
+        }
+
+    // l'erreur : [SyntaxError: JSON Parse error: Unexpected character: N]
+    //venait du fait que je n'entrais pas les bons éléments.
+    // Il y a un espace devant le mdp devweb quand je me connecte avec.
+
      const resultat = await reponse.json();
         console.log("Réussite :", resultat);
     }catch(error){
+
         console.log("voici l'erreur :",error)
         console.log("et son message :",error.message)
     }

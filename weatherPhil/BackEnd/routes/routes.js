@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const User = require('../schemas/user.js')
 const router = express.Router()
 
-router.post('/newUser', async (req,res)=>{
+router.post('/signup', async (req,res)=>{
     const {username, password} = req.body;
     /** on utilise la déstructuration pour retirer les données
     username et password
@@ -20,11 +20,12 @@ router.post('/newUser', async (req,res)=>{
         await newUser.save();
         //enregistre le nouvel utilisateur dans la base de donnée
 
-        res.status(201).send('Utilisateur créé avec succès');
+        //res.status(201).send('Utilisateur créé avec succès');
+        res.status(201).json({ message: 'Utilisateur créé avec succès' });
         }catch(error){
          // Vérifie si l'erreur est une duplication de clé
             if (error.code === 11000) {
-              return res.status(400).send('Ce nom d\'utilisateur est déjà pris.');
+              return res.status(409).send('Ce nom d\'utilisateur est déjà pris.');
 
 
         }
@@ -36,7 +37,7 @@ dotenv.config()
 const Key = process.env.JWT_KEY
 
 //mise en place de la route pour la connexion
-router.post('/connexion', async (req,res)=>{
+router.post('/login', async (req,res)=>{
     const {username,password} = req.body;
 
   try {
