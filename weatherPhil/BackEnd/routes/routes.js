@@ -6,15 +6,15 @@ const User = require('../schemas/user.js')
 const router = express.Router()
 
 router.post('/signup', async (req,res)=>{
-    const {username, password} = req.body;
+    const {username, mail, password} = req.body;
     /** on utilise la déstructuration pour retirer les données
     username et password
     */
     try {
-        if (!username || !password) {
-          return res.status(400).send('Username and password are required.');
+        if (!username || !password || !mail ) {
+          return res.status(400).send('Username, mail and password are required.');
         }
-        const newUser = new User({username, password})
+        const newUser = new User({username, mail, password})
         /* les données retirées sont passées en arguments de la nouvelle instance d'User*/
 
         await newUser.save();
