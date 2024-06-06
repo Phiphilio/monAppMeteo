@@ -6,12 +6,13 @@ import {styleText} from '../../navigation/navigationStyle.js'
 export function SignupStackScreen (){
 
 const [newName, setNewName]= useState("")
+const [newEmail,setNewEmail]= useState("")
 const [newPassword, setNewPassword]= useState("")
 
 const navigation = useNavigation()
 
 const GoConnected = ()=> {
-   // console.log('name',newName);
+
     signup(newName,newPassword)
 }
 
@@ -24,6 +25,13 @@ return(
            textAlign ={'left'}
            style={styleText}
        />
+        <TextInput
+                  onChangeText = {(e) => setNewEmail(e) }
+                  value = {newEmail}
+                  placeholder = {'Email'}
+                  textAlign ={'left'}
+                  style={styleText}
+              />
        <TextInput
            onChangeText = {(e) => setNewPassword(e) }
            value = {newPassword}
