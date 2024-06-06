@@ -13,7 +13,7 @@ const navigation = useNavigation()
 
 const GoConnected = ()=> {
 
-    signup(newName,newPassword)
+    signup(newName, newEmail, newPassword)
 }
 
 return(
@@ -49,12 +49,14 @@ return(
 
 
 
-async function signup( name, password){
+async function signup( name, mail, password){
     const donnees = {
                       "username": name,
+                      "mail" : mail,
                       "password":password
                     }
     console.log("le nom :",donnees.username)
+     console.log("l'email' :",donnees.mail)
     console.log("le mdp :",donnees.password)
 
     try{
